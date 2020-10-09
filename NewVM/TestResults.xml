@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="4" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-09-17" time="14:20:21">
+  <environment clr-version="4.0.30319.42000" user-domain="CONCENTRA" cwd="C:\Git\Arm" platform="Microsoft Windows 10 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition3" machine-name="CLAP-P794" nunit-version="2.5.8.0" os-version="10.0.18363" user="mark.kerry" />
+  <culture-info current-culture="en-GB" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="0.1789" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\Git\Arm\NewVM.tests.ps1" executed="True" result="Success" success="True" time="0.1789" asserts="0" description="C:\Git\Arm\NewVM.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="ARM Template Validation" executed="True" result="Success" success="True" time="0.1347" asserts="0" description="ARM Template Validation">
+            <results>
+              <test-suite type="TestFixture" name="ARM Template Validation.File Validation" executed="True" result="Success" success="True" time="0.0534" asserts="0" description="ARM Template Validation.File Validation">
+                <results>
+                  <test-case description="Template ARM file exists" name="ARM Template Validation.File Validation.Template ARM file exists" time="0.0054" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Is a valid JSON file" name="ARM Template Validation.File Validation.Is a valid JSON file" time="0.0121" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="ARM Template Validation.Template Content Validation" executed="True" result="Success" success="True" time="0.1022" asserts="0" description="ARM Template Validation.Template Content Validation">
+                <results>
+                  <test-case description="Contains all required elements" name="ARM Template Validation.Template Content Validation.Contains all required elements" time="0.0105" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Creates the expected resources" name="ARM Template Validation.Template Content Validation.Creates the expected resources" time="0.0062" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

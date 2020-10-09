@@ -1,0 +1,27 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "prefix": {
+            "value": "mkarm"
+        },
+        "vmSize": {
+            "value": "Standard_D2_v3"
+        },
+        "windowsOSVersion": {
+            "value": "2016-Datacenter"
+        },
+        "adminUsername": {
+            "value": "azureuser"
+        },
+        "adminPassword": {
+            "value": "6Thu0163BBs_5tQ"
+        },
+        "Location": {
+            "value": "[resourceGroup().location]"
+        },
+        "uri": {
+            "value": "https://csb6d02c8ba0588x4343xaba.blob.core.windows.net/nested-templates/StorageAccount.json"
+        }
+    }
+}
