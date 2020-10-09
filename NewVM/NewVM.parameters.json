@@ -17,7 +17,7 @@
         "adminPassword": {
             "reference": {
                 "keyVault": {
-                    "id": "/subscriptions/6d02c8ba-0588-4343-aba5-dc2280bd2bcc/resourceGroups/rg-msdn-mk-operations/providers/Microsoft.KeyVault/vaults/KV-MK-MSDN-ARM"
+                    "id": "/subscriptions/ID/resourceGroups/RG/providers/Microsoft.KeyVault/vaults/NAME"
                 },
                 "secretName": "vmAdminPassword"
             }
