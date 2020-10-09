@@ -21,7 +21,7 @@
             "value": "[resourceGroup().location]"
         },
         "uri": {
-            "value": "https://csb6d02c8ba0588x4343xaba.blob.core.windows.net/nested-templates/StorageAccount.json"
+            "value": "https://raw.githubusercontent.com/markkerry/arm-templates/main/Nested/StorageAccount.json"
         }
     }
 }
