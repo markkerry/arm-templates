@@ -8,6 +8,12 @@
                 "description": "Prefix used for naming resources."
             }
         },
+        "location": {
+            "type": "string",
+            "metadata": {
+                "description": "Location of the resources"
+            }
+        },
         "vmSize": {
             "type": "string",
             "metadata": {
@@ -48,7 +54,7 @@
             "name": "[variables('storageAccountName')]",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2019-06-01",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "tags": {
                 "displayName": "[variables('storageAccountName')]"
             },
@@ -61,7 +67,7 @@
             "name": "[concat(parameters('prefix'),'-PublicIP')]",
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2019-11-01",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "tags": {
                 "displayName": "[concat(parameters('prefix'),'-PublicIP')]"
             },
@@ -76,7 +82,7 @@
             "name": "[concat(parameters('prefix'),'-nsg')]",
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2018-08-01",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "properties": {
                 "securityRules": [
                     {
@@ -100,7 +106,7 @@
             "name": "[concat(parameters('prefix'),'-VirtualNetwork')]",
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2019-11-01",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/networkSecurityGroups', concat(parameters('prefix'),'-nsg'))]"
             ],
@@ -130,7 +136,7 @@
             "name": "[concat(parameters('prefix'),'-NetworkInterface')]",
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2019-11-01",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/publicIPAddresses', concat(parameters('prefix'),'-PublicIP'))]",
                 "[resourceId('Microsoft.Network/virtualNetworks', concat(parameters('prefix'),'-VirtualNetwork'))]"
@@ -159,7 +165,7 @@
             "name": "[concat(parameters('prefix'),'-VM')]",
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2019-07-01",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
                 "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('prefix'),'-NetworkInterface'))]"
