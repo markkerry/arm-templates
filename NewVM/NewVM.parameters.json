@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "prefix": {
-            "value": "mkarm"
+            "value": "mkarmdev"
         },
         "vmSize": {
             "value": "Standard_A2_v2"
