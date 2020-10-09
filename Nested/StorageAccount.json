@@ -6,7 +6,15 @@
             "type": "string",
             "metadata": {
                 "description": "Name of storage account"
-            }
+            },
+            "defaultValue": "mkmsdnsa0002"
+        },
+        "location": {
+            "type": "string",
+            "metadata": {
+                "description": "description"
+            },
+            "defaultValue": "[resourceGroup().location]"
         },
         "storageAccountSku": {
             "type": "string",
@@ -45,7 +53,7 @@
             "tags": {
                 "displayName": "[toLower(concat(parameters('storageAccountName'),uniqueString(resourceGroup().id)))]"
             },
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "kind": "StorageV2",
             "sku": {
                 "name": "[parameters('storageAccountSku')]",
