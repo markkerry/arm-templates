@@ -1,17 +1,11 @@
-<#param (
-    # Parameter help description
-    [Parameter(Mandatory=$true)]
-    [string]$TemplatePath
-)
-#>
-
-BeforeAll {
-    $TemplatePath = "C:\Git\Arm\NewVM.json"
-    $templateRaw = Get-Content -Path $TemplatePath -Raw -ErrorAction SilentlyContinue
-    $template = ConvertFrom-Json -InputObject $templateRaw -ErrorAction SilentlyContinue
-}
-
 Describe 'ARM Template Validation' {
+
+    BeforeAll {
+        $TemplatePath = "C:\Git\repos\Arm\NewVM\NewVM.json"
+        $templateRaw = Get-Content -Path $TemplatePath -Raw -ErrorAction SilentlyContinue
+        $template = ConvertFrom-Json -InputObject $templateRaw -ErrorAction SilentlyContinue
+    }
+
     Context 'File Validation' {
         It 'Template ARM file exists' {
             Test-Path $TemplatePath -Include "*.json" | Should -Be $true
@@ -20,6 +14,7 @@ Describe 'ARM Template Validation' {
             $templateRaw | ConvertFrom-Json -ErrorAction SilentlyContinue | Should -Not -Be $null
         }
     }
+
     Context 'Template Content Validation' {
         It 'Contains all required elements' {
             $elements = '$schema',
