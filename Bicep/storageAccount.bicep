@@ -1,7 +1,7 @@
 // Expose the resource location, name prefix and redundancy via parameters
 param location string = resourceGroup().location
 param namePrefix string = 'stg'
-param globalRedundancy bool = true
+param globalRedundancy bool = false
 
 // Add variables for storing values or complex expressions
 var storageAccountName = '${namePrefix}${uniqueString(resourceGroup().id)}' // prefix is concatinated with the unique string function

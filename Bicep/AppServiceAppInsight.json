@@ -1,0 +1,66 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appName": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "functions": [],
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Insights/components",
+      "apiVersion": "2015-05-01",
+      "name": "[format('insights-{0}', parameters('appName'))]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "Application_Type": "web"
+      }
+    },
+    {
+      "type": "Microsoft.web/serverfarms",
+      "apiVersion": "2019-08-01",
+      "name": "[format('hosting-{0}', parameters('appName'))]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "S1"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2018-11-01",
+      "name": "[parameters('appName')]",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "properties": {
+        "name": "[parameters('appName')]",
+        "siteConfig": {
+          "appSettings": [
+            {
+              "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+              "value": "[reference(resourceId('Microsoft.Insights/components', format('insights-{0}', parameters('appName')))).InstrumentationKey]"
+            }
+          ]
+        },
+        "serverFarmId": "[resourceId('Microsoft.web/serverfarms', format('hosting-{0}', parameters('appName')))]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.web/serverfarms', format('hosting-{0}', parameters('appName')))]",
+        "[resourceId('Microsoft.Insights/components', format('insights-{0}', parameters('appName')))]"
+      ]
+    }
+  ],
+  "outputs": {
+    "appId": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Web/sites', parameters('appName'))]"
+    }
+  }
+}
