@@ -229,4 +229,4 @@ $body = @'
 '@
 
 $response = Invoke-RestMethod 'https://test-iac.argos-security.io/api/iac-test?provider=arm&file_type=json' -Method 'POST' -Headers $headers -Body $body
-$response
+$response | Format-List
