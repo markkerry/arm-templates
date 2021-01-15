@@ -6,7 +6,7 @@
             "value": "mkarmdev"
         },
         "location": {
-            "value": "[resourceGroup().location]"
+            "value": "west europe"
         },
         "vmSize": {
             "value": "Standard_A2_v2"
