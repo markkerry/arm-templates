@@ -1,7 +1,7 @@
 Describe 'ARM Template Validation' {
 
     BeforeAll {
-        $TemplatePath = "C:\Git\repos\Arm\NewVM\NewVM.json"
+        $TemplatePath = "C:\git\repos\arm-templates\NewVM\NewVM.json"
         $templateRaw = Get-Content -Path $TemplatePath -Raw -ErrorAction SilentlyContinue
         $template = ConvertFrom-Json -InputObject $templateRaw -ErrorAction SilentlyContinue
     }
